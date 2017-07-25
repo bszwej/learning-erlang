@@ -1,0 +1,21 @@
+# Chapter 7: Binaries and the Bit Syntax
+
+- _binary_ data structure can store big amounts of data space-efficiently (Erlang VM is optimized for it)
+- _bitstring_ = _binary_ when bits in the data is not divisible by 8
+- binaries are written like this: `<<5,10,20>>` oro `<<"hello">>`
+- if binary's content is printable, the shell will print it
+- binaries can be built and extracted using **BIFs** or **bit syntax**
+- most important functions for manipulating binaries:
+    - `list_to_binary(L) -> B` - additionally flattens the list (does not nest binaries - it does not make sense)
+    - `split_binary(Bin, Pos) -> {Bin1, Bin2}`
+    - `term_to_binary(Term) -> Bin`
+    - `binary_to_term(Bin) -> Term`
+    - `byte_size(Bin) -> Size`
+- once serialized to binary, a term might be send over the wire of persisted on disk
+- _bit syntax_ allows to manipulate sequences of bits in binary
+- bit syntax is extremely useful in protocol programming
+- bit syntax:
+    - <<E1, E2, ..., En>>, Ei - _segment_
+    - Ei = Value | Value:Size | Value/TypeSpecifierList | Value:Size/TypeSpecifierList
+- More on this: page 102
+- Erlang supports _bit comprehensions_
